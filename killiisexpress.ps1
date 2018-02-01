@@ -1,7 +1,7 @@
 
 
 Write-Host "Cleaning up iisexpress"
-Get-Process -Name iisexpress | Stop-Process
+Get-Process -Name vstest.console | Stop-Process
 Write-Host "Cleaning up iisexpress completed"
 
 
