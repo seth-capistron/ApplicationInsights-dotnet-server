@@ -18,6 +18,11 @@ namespace E2ETestApp
             RouteConfig.RegisterRoutes(RouteTable.Routes);
             BundleConfig.RegisterBundles(BundleTable.Bundles);
             TelemetryConfiguration.Active.TelemetryChannel.DeveloperMode = true;
+
+            foreach (var module in Microsoft.ApplicationInsights.Extensibility.Implementation.TelemetryModules.Instance.Modules)
+            {
+                module.Initialize(Microsoft.ApplicationInsights.Extensibility.TelemetryConfiguration.Active);
+            }
         }
     }
 }

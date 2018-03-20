@@ -16,6 +16,11 @@ namespace AspNetDiagnostics
             // Code that runs on application startup
             RouteConfig.RegisterRoutes(RouteTable.Routes);
             BundleConfig.RegisterBundles(BundleTable.Bundles);
+
+            foreach (var module in Microsoft.ApplicationInsights.Extensibility.Implementation.TelemetryModules.Instance.Modules)
+            {
+                module.Initialize(Microsoft.ApplicationInsights.Extensibility.TelemetryConfiguration.Active);
+            }
         }
     }
 }

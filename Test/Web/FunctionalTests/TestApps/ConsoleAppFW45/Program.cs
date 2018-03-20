@@ -11,6 +11,11 @@
     {
         static void Main(string[] args)
         {
+            foreach (var module in Microsoft.ApplicationInsights.Extensibility.Implementation.TelemetryModules.Instance.Modules)
+            {
+                module.Initialize(Microsoft.ApplicationInsights.Extensibility.TelemetryConfiguration.Active);
+            }
+
             if (args.Length == 1)
             {
                 TelemetryClient client = new TelemetryClient(TelemetryConfiguration.Active);

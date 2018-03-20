@@ -15,6 +15,11 @@ namespace WebAppFW45
     {
         protected void Application_Start()
         {
+            foreach (var module in Microsoft.ApplicationInsights.Extensibility.Implementation.TelemetryModules.Instance.Modules)
+            {
+                module.Initialize(Microsoft.ApplicationInsights.Extensibility.TelemetryConfiguration.Active);
+            }
+
             var setting = ConfigurationManager.AppSettings["TestApp.SendTelemetyIntemOnAppStart"];
             if (false == string.IsNullOrWhiteSpace(setting) && true == bool.Parse(setting))
             {

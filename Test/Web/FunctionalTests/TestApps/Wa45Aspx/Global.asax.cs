@@ -12,7 +12,10 @@ namespace Wa45Aspx
 
         protected void Application_Start(object sender, EventArgs e)
         {
-
+            foreach (var module in Microsoft.ApplicationInsights.Extensibility.Implementation.TelemetryModules.Instance.Modules)
+            {
+                module.Initialize(Microsoft.ApplicationInsights.Extensibility.TelemetryConfiguration.Active);
+            }
         }
 
         protected void Session_Start(object sender, EventArgs e)

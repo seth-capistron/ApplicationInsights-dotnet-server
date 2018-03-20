@@ -34,6 +34,11 @@ namespace TestApp45
 
             TelemetryModules.Instance.Modules.Add(perfModule);
             TelemetryModules.Instance.Modules.Add(quickPulseModule);
+
+            foreach (var module in TelemetryModules.Instance.Modules)
+            {
+                module.Initialize(TelemetryConfiguration.Active);
+            }
         }
 
         private static QuickPulseTelemetryModule InitializeQuickPulseModule()
